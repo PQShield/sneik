@@ -32,7 +32,7 @@ and "arm" for 32-bit ARM Cortex M3/M4 platforms.
 
 Each directory contains test vectors generated with NIST's standard
 `genkat_aead.c` and `genkat_hash.c` programs. Most of the source code is
-actually symlinked from the common directory:
+usually symlinked from the common directory:
 
     common/sneik_f512   Implementations of the sneik_f512() permutation.
     common/ref_blnk     Reference implementation, using BLNK code.
