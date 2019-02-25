@@ -10,7 +10,7 @@ Root level files:
     sneik_spec.pdf      Algorithm specification and supporting documentation.
     LICENSE             A non-commercial / research / evaluation license.
     README.txt          This file.
-    testkat.sh          Verify "ref" and "opt" implementations against kat.
+    testkat.sh          Verify "ref" and "opt" implementations against KAT.
     genkat.sh           Generate KAT files (you don't need to do this).
 
 Source code and test vectors for SNEIKEN AEADs:
@@ -32,7 +32,7 @@ and "arm" for 32-bit ARM Cortex M3/M4 platforms.
 
 Each directory contains test vectors generated with NIST's standard
 `genkat_aead.c` and `genkat_hash.c` programs. Most of the source code is
-usually symlinked from the common directory:
+usually symlinked from the "common" directory:
 
     common/sneik_f512   Implementations of the sneik_f512() permutation.
     common/ref_blnk     Reference implementation, using BLNK code.
