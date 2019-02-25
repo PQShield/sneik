@@ -23,7 +23,7 @@ void blnk_fin(blnk_t *st, blnk_dom_t dom)
 
     blnk_put(st, dom, pad, 1);              // padding bit
     if ((dom & BLNK_FULL) == 0) {           // not a full-state input domain?
-        st->s[BLNK_RATE - 1] ^= 0x80;       // set last bit of capacity
+        st->s[BLNK_RATE - 1] ^= 0x80;       // flip last bit before capacity
     }
     BLNK_PI(&st->s, dom | BLNK_LAST);       // finalize
     st->i = 0;
