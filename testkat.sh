@@ -5,55 +5,58 @@ WORKD=`mktemp -d`
 echo "Work directory =" $WORKD
 AEADMAIN=$SNEIK/common/nist/genkat_aead.c
 HASHMAIN=$SNEIK/common/nist/genkat_hash.c
+CC=gcc
 CFLAGS="-std=c99 -Wall -Wextra -Wshadow -fsanitize=address,undefined -O2"
+TARGETS="ref opt"
 
-for x in $SNEIK/crypto_aead/*
+# The following works if you have the cross-compiler and QEMU binfmt support
+# CC=arm-linux-gnueabihf-gcc
+# CFLAGS="-std=c99 -Wall -static -O2"
+# TARGETS="ref opt arm"
+
+echo "Compiler = " $CC $CFLAGS
+
+for algpath in $SNEIK/crypto_aead/*
 do
 	echo
-	y=`basename $x`
-	cd $x
+	algname=`basename $algpath`
+	cd $algpath
 	KAT=`echo *.txt`
-	echo -n $y "KAT "
+	echo -n $algname "kat  "
 	sha256sum $KAT
-	cd $x/ref
-	gcc $CFLAGS -I. -o $WORKD/ref.$y *.* $AEADMAIN
-	cd $x/opt
-	gcc $CFLAGS -I. -o $WORKD/opt.$y *.* $AEADMAIN
-	cd $WORKD
-	rm -f *.txt
-	./ref.$y
-	echo -n $y "REF "
-	sha256sum *.txt
-	rm -f *.txt
-	./opt.$y
-	echo -n $y "OPT "
-	sha256sum *.txt
 
-	rm -f *
+	for targ in $TARGETS
+	do
+		cd $algpath/$targ
+		sources=`ls *.* | grep -v '\.h'`
+		$CC $CFLAGS -I. -o $WORKD/$targ.$algname $sources $AEADMAIN
+		cd $WORKD
+		./$targ.$algname
+		echo -n $algname $targ " "
+		sha256sum *.txt
+		rm -f *
+	done
 done
 
-for x in $SNEIK/crypto_hash/*
+for algpath in $SNEIK/crypto_hash/*
 do
 	echo
-	y=`basename $x`
-	cd $x
+	algname=`basename $algpath`
+	cd $algpath
 	KAT=`echo *.txt`
-	echo -n $y "KAT "
+	echo -n $algname "kat  "
 	sha256sum $KAT
-	cd $x/ref
-	gcc $CFLAGS -I. -o $WORKD/ref.$y *.* $HASHMAIN
-	cd $x/opt
-	gcc $CFLAGS -I. -o $WORKD/opt.$y *.* $HASHMAIN
-	cd $WORKD
-	rm -f *.txt
-	./ref.$y
-	echo -n $y "REF "
-	sha256sum *.txt
-	rm -f *.txt
-	./opt.$y
-	echo -n $y "OPT "
-	sha256sum *.txt
 
-	rm -f *
+	for targ in $TARGETS
+	do
+		cd $algpath/$targ
+		sources=`ls *.* | grep -v '\.h'`
+		$CC $CFLAGS -I. -o $WORKD/$targ.$algname $sources $HASHMAIN
+		cd $WORKD
+		./$targ.$algname
+		echo -n $algname $targ " "
+		sha256sum *.txt
+		rm -f *
+	done
 done
 

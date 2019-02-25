@@ -11,7 +11,7 @@ for x in $SNEIK/crypto_aead/*
 do
 	y=`basename $x`
 	cd $x/ref
-	gcc $CFLAGS -I. -o $WORKD/test.$y *.* $AEADMAIN
+	gcc $CFLAGS -I. -o $WORKD/test.$y *.c $AEADMAIN
 	cd $WORKD
 	./test.$y
 	echo -n $y ": "
@@ -24,7 +24,7 @@ for x in $SNEIK/crypto_hash/*
 do
 	y=`basename $x`
 	cd $x/ref
-	gcc $CFLAGS -I. -o $WORKD/test.$y *.* $HASHMAIN
+	gcc $CFLAGS -I. -o $WORKD/test.$y *.c $HASHMAIN
 	cd $WORKD
 	./test.$y
 	echo -n $y ": "
