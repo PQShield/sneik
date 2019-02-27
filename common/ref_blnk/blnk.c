@@ -47,7 +47,7 @@ void blnk_put(blnk_t *st, blnk_dom_t dom, const void *in, size_t len)
     }
 }
 
-//  Squeze data
+//  Squeeze data
 
 void blnk_get(blnk_t *st, blnk_dom_t dom, void *out, size_t len)
 {
