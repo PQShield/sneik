@@ -9,7 +9,7 @@ Root level files:
 
     sneik_spec.pdf      Algorithm specification and supporting documentation.
     LICENSE             A non-commercial / research / evaluation license.
-    README.txt          This file.
+    README              This file.
     testkat.sh          Verify "ref" and "opt" implementations against KAT.
     genkat.sh           Generate KAT files (you don't need to do this).
 
