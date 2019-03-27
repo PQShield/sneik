@@ -4,3 +4,4 @@ int crypto_hash(
 	const unsigned char *in,
 	unsigned long long inlen
 	);
+

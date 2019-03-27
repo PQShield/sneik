@@ -1,34 +1,34 @@
-//  hash.c
-//  2019-02-20  Markku-Juhani O. Saarinen <mjos@pqshield.com>
-//  Copyright (C) 2019, PQShield Ltd. Please see LICENSE.
+//	hash.c
+//	2019-02-20	Markku-Juhani O. Saarinen <mjos@pqshield.com>
+//	Copyright (C) 2019, PQShield Ltd. Please see LICENSE.
 
-//  Reference hash using the BLNK calls
+//	Reference SNEIKHA hash using the BLNK calls
 
 #include "api.h"
 #include "crypto_hash.h"
 #include "blnk.h"
 
-//  Single-call NIST interface
+//	Single-call NIST interface
 
 int crypto_hash(
-    unsigned char *out,
-    const unsigned char *in,
-    unsigned long long inlen)
+	unsigned char *out,
+	const unsigned char *in,
+	unsigned long long inlen)
 {
-    blnk_t  cb;                         //  Local state
+	blnk_t	ctx;						//	Local state
 
-    blnk_clr(&cb);                      //  Clear state
+	//	Clear state, set parameters
+	blnk_clr(&ctx, SNEIKHA_RATE, SNEIKHA_ROUNDS);
 
-    //  Process input
-    blnk_put(&cb, BLNK_AD, in, (size_t) inlen);
-    blnk_fin(&cb, BLNK_AD);
+	//	Process input
+	blnk_put(&ctx, BLNK_AD, in, (size_t) inlen);
+	blnk_fin(&ctx, BLNK_AD);
 
-    //  Get the hash
-    blnk_get(&cb, BLNK_HASH, out, CRYPTO_BYTES);
+	//	Get the hash
+	blnk_get(&ctx, BLNK_HASH, out, CRYPTO_BYTES);
 
-    //  blnk_fin(&cb, BLNK_HASH);       //  For intermediate hashes
-    blnk_clr(&cb);                      //  Clear out sensitive data
+	//	blnk_fin(&ctx, BLNK_HASH);		//	For intermediate hashes
 
-    return 0;                           //  Success
+	return 0;							//	Success
 }
 
