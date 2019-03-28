@@ -16,14 +16,13 @@ Root level files:
 Source code and test vectors for SNEIKEN AEADs:
 
     crypto_aead/sneiken128/ ref opt arm avr LWC_AEAD_KAT_128_128.txt
+    crypto_aead/sneiken192/ ref opt arm avr LWC_AEAD_KAT_256_128.txt
     crypto_aead/sneiken256/ ref opt arm avr LWC_AEAD_KAT_256_128.txt
-    crypto_aead/sneiqen128/ ref opt arm avr LWC_AEAD_KAT_128_96.txt
 
 Source code and test vectors for SNEIKHA hash functions:
 
     crypto_hash/sneikha256/ ref opt arm avr LWC_HASH_KAT_256.txt
     crypto_hash/sneikha384/ ref opt arm avr LWC_HASH_KAT_384.txt
-    crypto_hash/sneigen128/ ref opt arm avr LWC_HASH_KAT_128.txt
 
 Each directory has a "ref" portable reference implementation, somewhat smaller
 "opt" optimized version (which assumes that the platform is little-endian) and
@@ -39,5 +38,3 @@ usually symlinked from the "common" directory:
     common/opt          Smaller implementation for single-call API.
     common/nist         NIST's headers and KAT generation code.
     common/test         Some test code.
-
-
