@@ -68,5 +68,5 @@ int blnk_cmp(blnk_t *st, blnk_dom_t dom, const void *in, size_t len);
 //  Ratchet for forward security
 void blnk_ratchet(blnk_t *ctx);
 
-#endif
+#endif  /* _BLNK_H_ */
 
