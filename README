@@ -34,6 +34,6 @@ standard `genkat_aead.c` and `genkat_hash.c` programs. Most of the source
 code is usually symlinked from the "common" directory:
 
     common/sneik_f512   Implementations of the sneik_f512() permutation.
-    common/ref_blnk     Reference implementation, using BLNK code.
+    common/ref_blnk     Reference implementation, using BLNK2 code.
     common/opt          Smaller implementations for the single-call API.
     common/nist         NIST's headers and KAT generation code.
