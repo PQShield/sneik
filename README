@@ -29,12 +29,11 @@ Each directory has a "ref" portable reference implementation, somewhat smaller
 versions utilizing assembly-optimized permutations: "avr" for 8-bit Atmel AVR,
 and "arm" for 32-bit ARM Cortex M3/M4 platforms.
 
-Each directory furthermore contains test vectors generated with NIST's 
-standard `genkat_aead.c` and `genkat_hash.c` programs. Most of the source 
+Each directory furthermore contains test vectors generated with NIST's
+standard `genkat_aead.c` and `genkat_hash.c` programs. Most of the source
 code is usually symlinked from the "common" directory:
 
     common/sneik_f512   Implementations of the sneik_f512() permutation.
     common/ref_blnk     Reference implementation, using BLNK code.
     common/opt          Smaller implementations for the single-call API.
     common/nist         NIST's headers and KAT generation code.
-    common/test         Some test code.
