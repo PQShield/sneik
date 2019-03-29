@@ -16,7 +16,7 @@ Root level files:
 Source code and test vectors for SNEIKEN AEADs:
 
     crypto_aead/sneiken128/ ref opt arm avr LWC_AEAD_KAT_128_128.txt
-    crypto_aead/sneiken192/ ref opt arm avr LWC_AEAD_KAT_256_128.txt
+    crypto_aead/sneiken192/ ref opt arm avr LWC_AEAD_KAT_192_128.txt
     crypto_aead/sneiken256/ ref opt arm avr LWC_AEAD_KAT_256_128.txt
 
 Source code and test vectors for SNEIKHA hash functions:
@@ -35,6 +35,6 @@ usually symlinked from the "common" directory:
 
     common/sneik_f512   Implementations of the sneik_f512() permutation.
     common/ref_blnk     Reference implementation, using BLNK code.
-    common/opt          Smaller implementation for single-call API.
+    common/opt          Smaller implementations for the single-call API.
     common/nist         NIST's headers and KAT generation code.
     common/test         Some test code.
