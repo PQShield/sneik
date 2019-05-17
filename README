@@ -1,13 +1,13 @@
-nb. I will be updating the documentation and implementation to SNEIK v 1.1
-before the end of June 2019. The modification is very minor, so these 
-implementations can still be used to measure engineering aspects of SNEIK.
-However, this is no longer the "reference" implementation.
+nb. May 17, 2019:
 
+I will be updating the reference implementation to SNEIK v1.1 before end of
+June 2019. The modification will be very minor, so these implementations 
+can be still used to measure engineering aspects of SNEIK.
 
 Cheers,
-- markku	May 17, 2019
+- markku
 
------
+----
 
 README
 2019-02-24  Markku-Juhani O. Saarinen <mjos@pqshield.com>
