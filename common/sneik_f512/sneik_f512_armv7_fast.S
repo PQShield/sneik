@@ -2,7 +2,7 @@
 //  2019-02-06  Markku-Juhani O. Saarinen <mjos@pqshield.com>
 //  Copyright (C) 2019, PQShield Ltd. Please see LICENSE.
 
-//  SNEIK f512 implementation for ARMv7 (including ARMv7-m), fully unrolled
+//  SNEIK f512 v1.1 implementation for ARMv7 (including ARMv7-m), fully unrolled
 
 //  C prototype: void sneik_f512(void *state, uint8_t dom, uint8_t rounds);
 
@@ -17,7 +17,7 @@
         add     \t0, \t0, \t3               // t0 += t3;
         eor     r3,  \t0, \t0, ror #8       // t0 = t0 ^ ROR32(t0, 8)
         eor     \t0, r3,  \t0, ror #7       //         ^ ROR32(t0, 7);
-        eor     \t0, \t0, \t2               // t0 ^= t2;
+        eor     \t0, \t0, \t2, ror #31      // t0 ^= ROR32(t2, 31);
         ldr     \t2, [r0, #4*((\pos + 2) % 16)] // t2 = vec[(pos + 2) & 0xF];
         add     \t0, \t0, \t2               // t0 += t2;
         eor     r3,  \t0, \t0, ror #8       // t0 = t0 ^ ROR32(t0, 15)

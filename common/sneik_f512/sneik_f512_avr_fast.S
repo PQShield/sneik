@@ -2,7 +2,7 @@
 //  2019-02-14  Markku-Juhani O. Saarinen <mjos@pqshield.com>
 //  Copyright (C) 2019, PQShield Ltd. Please see LICENSE.
 
-//  Fully unrolled 8-bit Atmel AVR implementation for the SNEIK f512 function.
+//  Fully unrolled 8-bit Atmel AVR implementation of the SNEIK v1.1 f512().
 
 //  Prototype:
 //      void sneik_f512(void *s, uint8_t dom, uint8_t rounds);
@@ -57,6 +57,12 @@ __zero_reg__ = 1
         eor     \t0 + 1,    \tmp + 1
         eor     \t0 + 2,    \tmp + 2
         eor     \t0 + 3,    \tmp + 3
+
+        lsl     \t2                     //  t2 = t2 <<< 1
+        rol     \t2 + 1
+        rol     \t2 + 2
+        rol     \t2 + 3
+        adc     \t2,   __zero_reg__
 
         //      outer feedback
         eor     \t0,        \t2         //  t0 ^= t2;

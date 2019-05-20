@@ -2,7 +2,7 @@
 //  2019-02-23  Markku-Juhani O. Saarinen <mjos@pqshield.com>
 //  Copyright (C) 2019, PQShield Ltd. Please see LICENSE.
 
-//  SNEIK f512 implementation for a 32-bit little endian C99 target.
+//  SNEIK v1.1 f512 implementation for a 32-bit little endian C99 target.
 
 #include <stdint.h>
 
@@ -13,7 +13,7 @@
 #define MIX_F(pos, vec, t0, t1, t2, t3) {       \
     t0 += t3;                                   \
     t0 = t0 ^ ROR32(t0, 7) ^ ROR32(t0, 8);      \
-    t0 ^= t2;                                   \
+    t0 ^= ROR32(t2, 31);                        \
     t2 = vec[(pos + 2) & 0xF];                  \
     t0 += t2;                                   \
     t0 = t0 ^ ROR32(t0, 15) ^ ROR32(t0, 23);    \

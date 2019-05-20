@@ -9,10 +9,10 @@ CC=gcc
 CFLAGS="-std=c99 -Wall -Wextra -Wshadow -fsanitize=address,undefined -O2"
 TARGETS="ref opt"
 
-# The following works if you have the cross-compiler and QEMU binfmt support
-# CC=arm-linux-gnueabihf-gcc
-# CFLAGS="-std=c99 -Wall -static -O2"
-# TARGETS="ref opt arm"
+#The following works if you have the cross-compiler and QEMU binfmt support
+#CC=arm-linux-gnueabihf-gcc
+#CFLAGS="-std=c99 -Wall -static -O2"
+#TARGETS="ref opt arm"
 
 echo "Compiler = " $CC $CFLAGS
 

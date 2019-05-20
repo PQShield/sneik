@@ -1,19 +1,11 @@
-nb. May 17, 2019:
-
-I will be updating the reference implementation to SNEIK v1.1 before end of
-June 2019. The modification will be very minor, so these implementations 
-can be still used to measure engineering aspects of SNEIK.
-
-Cheers,
-- markku
-
-----
-
 README
 2019-02-24  Markku-Juhani O. Saarinen <mjos@pqshield.com>
 Copyright (C) 2019, PQShield Ltd. Please see LICENSE.
 
-This is the source code package for the SNEIKEN family of lightweight
+Updated from SNEIK v1.0 to SNEIK v1.1 on 2019-05-20. The new version 
+adopts the additional circular rotation fix suggested by Léo Perrin.
+
+This is the source code package for the SNEIK v1.1 family of lightweight
 cryptographic algorithms.
 
 Root level files:
