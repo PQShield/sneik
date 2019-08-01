@@ -1,4 +1,4 @@
-//  f512_cle.c
+//  sneik_f512_cle.c
 //  2019-02-23  Markku-Juhani O. Saarinen <mjos@pqshield.com>
 //  Copyright (C) 2019, PQShield Ltd. Please see LICENSE.
 
