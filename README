@@ -2,8 +2,9 @@ README
 2019-02-24  Markku-Juhani O. Saarinen <mjos@pqshield.com>
 Copyright (C) 2019, PQShield Ltd. Please see LICENSE.
 
-Updated from SNEIK v1.0 to SNEIK v1.1 on 2019-05-20. The new version 
-adopts the additional circular rotation fix suggested by Léo Perrin.
+- 2019-05-20: Updated from SNEIK v1.0 to SNEIK v1.1 on  The new version 
+  adopts the additional circular rotation fix suggested by Léo Perrin.
+- 2019-08-18: Added RISC-V (RV32I) assembler, updated to faster ARMv7 code.
 
 This is the source code package for the SNEIK v1.1 family of lightweight
 cryptographic algorithms.
@@ -18,19 +19,19 @@ Root level files:
 
 Source code and test vectors for SNEIKEN AEADs:
 
-    crypto_aead/sneiken128/ ref opt arm avr LWC_AEAD_KAT_128_128.txt
-    crypto_aead/sneiken192/ ref opt arm avr LWC_AEAD_KAT_192_128.txt
-    crypto_aead/sneiken256/ ref opt arm avr LWC_AEAD_KAT_256_128.txt
+    crypto_aead/sneiken128/ ref opt avr armv7 rv32i LWC_AEAD_KAT_128_128.txt
+    crypto_aead/sneiken192/ ref opt avr armv7 rv32i LWC_AEAD_KAT_192_128.txt
+    crypto_aead/sneiken256/ ref opt avr armv7 rv32i LWC_AEAD_KAT_256_128.txt
 
 Source code and test vectors for SNEIKHA hash functions:
 
-    crypto_hash/sneikha256/ ref opt arm avr LWC_HASH_KAT_256.txt
-    crypto_hash/sneikha384/ ref opt arm avr LWC_HASH_KAT_384.txt
+    crypto_hash/sneikha256/ ref opt avr armv7 rv32i LWC_HASH_KAT_256.txt
+    crypto_hash/sneikha384/ ref opt avr armv7 rv32i LWC_HASH_KAT_384.txt
 
 Each directory has a "ref" portable reference implementation, somewhat smaller
 "opt" optimized version (which assumes that the platform is little-endian) and
 versions utilizing assembly-optimized permutations: "avr" for 8-bit Atmel AVR,
-and "arm" for 32-bit ARM Cortex M3/M4 platforms.
+"armv7" for 32-bit ARMv7(-m), and "rv32i" for 32-bit base RISC-V ISA.
 
 Each directory furthermore contains test vectors generated with NIST's
 standard `genkat_aead.c` and `genkat_hash.c` programs. Most of the source

@@ -9,10 +9,14 @@ CC=gcc
 CFLAGS="-std=c99 -Wall -Wextra -Wshadow -fsanitize=address,undefined -O2"
 TARGETS="ref opt"
 
-#The following works if you have the cross-compiler and QEMU binfmt support
+#These work if you have the right crosss-compiler and QEMU binfmt support
 #CC=arm-linux-gnueabihf-gcc
-#CFLAGS="-std=c99 -Wall -static -O2"
-#TARGETS="ref opt arm"
+#CFLAGS="-std=c99 -Wall -static -O2 -march=armv7"
+#TARGETS="ref opt armv7"
+
+#CC=riscv64-unknown-linux-gnu-gcc
+#CFLAGS="-std=c99 -Wall -static -O2 -march=rv32g -mabi=ilp32"
+#TARGETS="ref opt rv32i"
 
 echo "Compiler = " $CC $CFLAGS
 
@@ -22,7 +26,7 @@ do
 	algname=`basename $algpath`
 	cd $algpath
 	KAT=`echo *.txt`
-	echo -n $algname "kat  "
+	echo -en $algname "\t kat\t"
 	sha256sum $KAT
 
 	for targ in $TARGETS
@@ -32,7 +36,7 @@ do
 		$CC $CFLAGS -I. -o $WORKD/$targ.$algname $sources $AEADMAIN
 		cd $WORKD
 		./$targ.$algname
-		echo -n $algname $targ " "
+		echo -en $algname "\t" $targ "\t"
 		sha256sum *.txt
 		rm -f *
 	done
@@ -44,7 +48,7 @@ do
 	algname=`basename $algpath`
 	cd $algpath
 	KAT=`echo *.txt`
-	echo -n $algname "kat  "
+	echo -en $algname "\t kat\t"
 	sha256sum $KAT
 
 	for targ in $TARGETS
@@ -54,7 +58,7 @@ do
 		$CC $CFLAGS -I. -o $WORKD/$targ.$algname $sources $HASHMAIN
 		cd $WORKD
 		./$targ.$algname
-		echo -n $algname $targ " "
+		echo -en $algname "\t" $targ "\t"
 		sha256sum *.txt
 		rm -f *
 	done
